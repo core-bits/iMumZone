@@ -1,5 +1,6 @@
 package com.corebits.imumzone.dto;
 
+import com.corebits.imumzone.util.CommonUtils;
 import java.util.Date;
 
 /**
@@ -89,6 +90,9 @@ public class ChildProfileDTO{
         this.image = image;
     }
     
-    
+    @Override
+    public String toString(){
+        return CommonUtils.toString(this);
+    }
     
 }
