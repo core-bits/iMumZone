@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.corebits.imumzone.persistence;
 
 import java.io.Serializable;
@@ -49,32 +44,42 @@ public class ChildProfile implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "FIRST_NAME")
     private String firstName;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "LAST_NAME")
     private String lastName;
     @Size(max = 45)
     @Column(name = "OTHER_NAME")
     private String otherName;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DATE_OF_BIRTH")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "HEIGHT")
-    private String height;
-    @Size(max = 45)
+    private double height;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "WEIGHT")
-    private String weight;
-    @Size(max = 45)
+    private double weight;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DATE_CREATED")
-    private String dateCreated;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreated;
     @Size(max = 45)
     @Column(name = "IMAGE")
     private String image;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "childProfileId")
-    private Set<ChildStory> childStorySet;
+    private Set<ChildStory> childStoryList;
     @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
     @ManyToOne
     private ZoneUser userId;
@@ -84,6 +89,16 @@ public class ChildProfile implements Serializable {
 
     public ChildProfile(Integer id) {
         this.id = id;
+    }
+
+    public ChildProfile(Integer id, String firstName, String lastName, Date dateOfBirth, double height, double weight, Date dateCreated) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.height = height;
+        this.weight = weight;
+        this.dateCreated = dateCreated;
     }
 
     public Integer getId() {
@@ -126,27 +141,27 @@ public class ChildProfile implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public String getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public String getDateCreated() {
+    public Date getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(String dateCreated) {
+    public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
 
@@ -158,12 +173,12 @@ public class ChildProfile implements Serializable {
         this.image = image;
     }
 
-    public Set<ChildStory> getChildStorySet() {
-        return childStorySet;
+    public Set<ChildStory> getChildStoryList() {
+        return childStoryList;
     }
 
-    public void setChildStorySet(Set<ChildStory> childStorySet) {
-        this.childStorySet = childStorySet;
+    public void setChildStoryList(Set<ChildStory> childStoryList) {
+        this.childStoryList = childStoryList;
     }
 
     public ZoneUser getUserId() {
@@ -196,7 +211,7 @@ public class ChildProfile implements Serializable {
 
     @Override
     public String toString() {
-        return "com.corebits.imumzone.entity.ChildProfile[ id=" + id + " ]";
+        return "com.corebits.imumzone.persistence.ChildProfile[ id=" + id + " ]";
     }
     
 }

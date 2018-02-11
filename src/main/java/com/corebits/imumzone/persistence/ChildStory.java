@@ -6,6 +6,7 @@
 package com.corebits.imumzone.persistence;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -46,24 +49,32 @@ public class ChildStory implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "STORY_ID")
     private String storyId;
-    @Size(max = 25)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 25)
     @Column(name = "STORY_PERIOD")
     private String storyPeriod;
-    @Size(max = 15)
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "HEIGHT")
-    private String height;
-    @Size(max = 45)
+    private double height;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "WEIGHT")
-    private String weight;
+    private double weight;
     @Lob
     @Column(name = "RECENT_PICTURE")
     private byte[] recentPicture;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DATE_STORY_CREATED")
-    private String dateStoryCreated;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateStoryCreated;
     @Size(max = 250)
     @Column(name = "STORY_DESCRIPTION")
     private String storyDescription;
@@ -90,6 +101,15 @@ public class ChildStory implements Serializable {
         this.id = id;
     }
 
+    public ChildStory(Integer id, String storyId, String storyPeriod, double height, double weight, Date dateStoryCreated) {
+        this.id = id;
+        this.storyId = storyId;
+        this.storyPeriod = storyPeriod;
+        this.height = height;
+        this.weight = weight;
+        this.dateStoryCreated = dateStoryCreated;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -114,19 +134,19 @@ public class ChildStory implements Serializable {
         this.storyPeriod = storyPeriod;
     }
 
-    public String getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public String getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -138,11 +158,11 @@ public class ChildStory implements Serializable {
         this.recentPicture = recentPicture;
     }
 
-    public String getDateStoryCreated() {
+    public Date getDateStoryCreated() {
         return dateStoryCreated;
     }
 
-    public void setDateStoryCreated(String dateStoryCreated) {
+    public void setDateStoryCreated(Date dateStoryCreated) {
         this.dateStoryCreated = dateStoryCreated;
     }
 
@@ -216,7 +236,7 @@ public class ChildStory implements Serializable {
 
     @Override
     public String toString() {
-        return "com.corebits.imumzone.entity.ChildStory[ id=" + id + " ]";
+        return "com.corebits.imumzone.persistence.ChildStory[ id=" + id + " ]";
     }
     
 }

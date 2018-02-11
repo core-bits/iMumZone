@@ -52,28 +52,42 @@ public class ZoneUser implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "FIRST_NAME")
     private String firstName;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "LAST_NAME")
     private String lastName;
     @Size(max = 45)
     @Column(name = "OTHER_NAME")
     private String otherName;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DATE_REGISTERED")
-    private String dateRegistered;
-    @Size(max = 15)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateRegistered;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 15)
     @Column(name = "GENDER")
     private String gender;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "DATE_OF_BIRTH")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "COUNTRY_OF_RESIDENCE")
     private String countryOfResidence;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "STATE_OF_RESIDENCE")
     private String stateOfResidence;
     @Size(max = 45)
@@ -85,13 +99,19 @@ public class ZoneUser implements Serializable {
     @Column(name = "LAST_LOGIN_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLoginDate;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "COUNTRY_OF_ORIGIN")
     private String countryOfOrigin;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "STATE_OF_ORIGIN")
     private String stateOfOrigin;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "TRIBE")
     private String tribe;
     @OneToMany(mappedBy = "userId")
@@ -102,6 +122,20 @@ public class ZoneUser implements Serializable {
 
     public ZoneUser(Integer id) {
         this.id = id;
+    }
+
+    public ZoneUser(Integer id, String firstName, String lastName, Date dateRegistered, String gender, Date dateOfBirth, String countryOfResidence, String stateOfResidence, String countryOfOrigin, String stateOfOrigin, String tribe) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateRegistered = dateRegistered;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.countryOfResidence = countryOfResidence;
+        this.stateOfResidence = stateOfResidence;
+        this.countryOfOrigin = countryOfOrigin;
+        this.stateOfOrigin = stateOfOrigin;
+        this.tribe = tribe;
     }
 
     public Integer getId() {
@@ -136,11 +170,11 @@ public class ZoneUser implements Serializable {
         this.otherName = otherName;
     }
 
-    public String getDateRegistered() {
+    public Date getDateRegistered() {
         return dateRegistered;
     }
 
-    public void setDateRegistered(String dateRegistered) {
+    public void setDateRegistered(Date dateRegistered) {
         this.dateRegistered = dateRegistered;
     }
 
@@ -254,7 +288,7 @@ public class ZoneUser implements Serializable {
 
     @Override
     public String toString() {
-        return "com.corebits.imumzone.entity.ZoneUser[ id=" + id + " ]";
+        return "com.corebits.imumzone.persistence.ZoneUser[ id=" + id + " ]";
     }
     
 }
