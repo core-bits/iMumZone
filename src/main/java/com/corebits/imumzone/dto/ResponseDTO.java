@@ -11,6 +11,7 @@ import com.corebits.imumzone.util.CommonUtils;
 public class ResponseDTO {
     private String code;
     private String description;
+    private Object data;
     
     public ResponseDTO(){}
     
@@ -38,6 +39,14 @@ public class ResponseDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author Oche
  */
-public class ChildProfileDTO{
+public class ChildProfileQueryDTO{
     private Integer id;
     private String firstName;
     private String lastName;
@@ -16,7 +16,6 @@ public class ChildProfileDTO{
     private Double height;
     private Double weight;
     private Date dateCreated;
-    private String image;
     
     public Integer getId() {
         return id;
@@ -82,13 +81,6 @@ public class ChildProfileDTO{
         this.dateCreated = dateCreated;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
     
     @Override
     public String toString(){

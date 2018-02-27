@@ -1,5 +1,6 @@
 package com.corebits.imumzone.persistence;
 
+import com.corebits.imumzone.util.CommonUtils;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -7,12 +8,15 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,8 +44,8 @@ public class ChildProfile implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID")
     private Integer id;
     @Basic(optional = false)
@@ -161,7 +165,7 @@ public class ChildProfile implements Serializable {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(Date dateCreated) {        
         this.dateCreated = dateCreated;
     }
 
@@ -211,7 +215,7 @@ public class ChildProfile implements Serializable {
 
     @Override
     public String toString() {
-        return "com.corebits.imumzone.persistence.ChildProfile[ id=" + id + " ]";
+        return CommonUtils.toString(this);
     }
     
 }

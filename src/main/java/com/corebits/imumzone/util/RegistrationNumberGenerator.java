@@ -1,5 +1,5 @@
 
-package com.corebits.nucleus.util;
+package com.corebits.imumzone.util;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

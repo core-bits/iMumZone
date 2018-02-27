@@ -25,6 +25,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.corebits.imumzone.rest.AdminResource.class);
         resources.add(com.corebits.imumzone.rest.ChildResource.class);
+        resources.add(com.corebits.imumzone.rest.ChildStoryResource.class);
         resources.add(com.corebits.imumzone.rest.IZoneUserResource.class);
     }
 }
