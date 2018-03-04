@@ -16,7 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -61,6 +60,11 @@ public class ChildProfile implements Serializable {
     @Size(max = 45)
     @Column(name = "OTHER_NAME")
     private String otherName;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "GENDER")
+    private String gender;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATE_OF_BIRTH")
@@ -135,6 +139,14 @@ public class ChildProfile implements Serializable {
 
     public void setOtherName(String otherName) {
         this.otherName = otherName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Date getDateOfBirth() {

@@ -17,6 +17,7 @@ public class DTOMapper {
         dto.setFirstName(profile.getFirstName());
         dto.setLastName(profile.getLastName());
         dto.setOtherName(profile.getOtherName());
+        dto.setGender(profile.getGender());
         dto.setDateOfBirth(profile.getDateOfBirth());
         dto.setHeight(profile.getHeight());
         dto.setWeight(profile.getWeight());

@@ -19,6 +19,7 @@ public class EntityMapper {
         profile.setFirstName(dto.getFirstName());
         profile.setLastName(dto.getLastName());
         profile.setOtherName(dto.getOtherName());
+        profile.setGender(dto.getGender());
         profile.setDateOfBirth(dto.getDateOfBirth());
         profile.setHeight(dto.getHeight());
         profile.setWeight(dto.getWeight());

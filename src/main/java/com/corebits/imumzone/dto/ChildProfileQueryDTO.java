@@ -12,6 +12,7 @@ public class ChildProfileQueryDTO{
     private String firstName;
     private String lastName;
     private String otherName;
+    private String gender;
     private Date dateOfBirth;
     private Double height;
     private Double weight;
@@ -47,6 +48,14 @@ public class ChildProfileQueryDTO{
 
     public void setOtherName(String otherName) {
         this.otherName = otherName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Date getDateOfBirth() {
